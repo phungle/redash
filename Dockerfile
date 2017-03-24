@@ -8,6 +8,4 @@ RUN pip install -r requirements.txt -r requirements_dev.txt -r requirements_all_
 COPY . ./
 RUN npm install && npm run build && rm -rf node_modules
 RUN chown -R redash /app
-USER redash
-
-ENTRYPOINT ["/app/bin/docker-entrypoint"]
+#USER redash # Should be use root user instead of redash user, we need export log to file & mount to host volume.
